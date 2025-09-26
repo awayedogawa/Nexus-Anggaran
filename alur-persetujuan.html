@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alur Persetujuan - Nexus Anggaran</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-cubes"></i>
+                <span>Nexus Anggaran</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="penyusunan-rka.html"><i class="fas fa-file-alt"></i> Penyusunan RKA</a></li>
+                    <li class="active"><a href="alur-persetujuan.html"><i class="fas fa-sitemap"></i> Alur Persetujuan</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Monitoring & Realisasi</a></li>
+                    <li><a href="#"><i class="fas fa-print"></i> Pelaporan</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fas fa-cog"></i> Pengaturan</a>
+                <button id="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-title">
+                    <h2>Alur Persetujuan</h2>
+                    <p>Lacak status pengajuan RKA dari draft hingga disetujui.</p>
+                </div>
+                <div class="header-user">
+                    <i class="fas fa-bell"></i>
+                    <img src="https://raw.githubusercontent.com/awayedogawa/Nexus-Anggaran/main/assets/avatar.png" alt="User Avatar" class="user-avatar">
+                </div>
+            </header>
+
+            <div class="content-body kanban-board">
+                <div class="kanban-column">
+                    <div class="kanban-column-header">
+                        <h4>Draft (3)</h4>
+                    </div>
+                    <div class="kanban-cards">
+                        <div class="kanban-card">
+                            <h5>RKA No. 2024.02.5B</h5>
+                            <p>Peningkatan Infrastruktur SDM</p>
+                            <span class="status-tag grey">Status: Draft</span>
+                            <div class="card-footer"><span>Rp 20 Miliar</span></div>
+                        </div>
+                         <div class="kanban-card">
+                            <h5>RKA No. 2024.02.8C</h5>
+                            <p>Perawatan Aset</p>
+                            <span class="status-tag grey">Status: Draft</span>
+                            <div class="card-footer"><span>Rp 5 Miliar</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kanban-column">
+                    <div class="kanban-column-header">
+                        <h4>Review Atasan (1)</h4>
+                    </div>
+                    <div class="kanban-cards">
+                         <div class="kanban-card">
+                            <h5>RKA No. 2024.03.1A</h5>
+                            <p>Pembangunan Infrastruktur</p>
+                            <span class="status-tag orange">Status: Menunggu Persetujuan</span>
+                            <div class="card-footer">
+                                <span>Rp 20 Miliar</span>
+                                <div class="card-actions">
+                                    <button class="btn-card reject">Revisi</button>
+                                    <button class="btn-card approve">Setuju</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kanban-column">
+                     <div class="kanban-column-header">
+                        <h4>Verifikasi Keuangan (0)</h4>
+                    </div>
+                     <div class="kanban-cards">
+                        </div>
+                </div>
+
+                <div class="kanban-column">
+                    <div class="kanban-column-header">
+                        <h4>Disetujui (1)</h4>
+                    </div>
+                     <div class="kanban-cards">
+                         <div class="kanban-card">
+                            <h5>RKA No. 2024.01.1A</h5>
+                            <p>Peremajaan Peralatan IT</p>
+                            <span class="status-tag green"><i class="fas fa-check-circle"></i> Disetujui</span>
+                            <div class="card-footer"><span>Rp 500 Juta</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="dashboard-script.js"></script>
+</body>
+</html>
