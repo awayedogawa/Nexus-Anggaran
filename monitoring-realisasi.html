@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring & Realisasi - Nexus Anggaran</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-cubes"></i>
+                <span>Nexus Anggaran</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="penyusunan-rka.html"><i class="fas fa-file-alt"></i> Penyusunan RKA</a></li>
+                    <li><a href="alur-persetujuan.html"><i class="fas fa-sitemap"></i> Alur Persetujuan</a></li>
+                    <li class="active"><a href="monitoring-realisasi.html"><i class="fas fa-chart-line"></i> Monitoring & Realisasi</a></li>
+                    <li><a href="#"><i class="fas fa-print"></i> Pelaporan</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fas fa-cog"></i> Pengaturan</a>
+                <button id="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-title">
+                    <h2>Monitoring & Realisasi</h2>
+                    <p>Pantau perbandingan antara anggaran dan realisasi belanja.</p>
+                </div>
+                <div class="header-user">
+                    <i class="fas fa-bell"></i>
+                    <img src="https://raw.githubusercontent.com/awayedogawa/Nexus-Anggaran/main/assets/avatar.png" alt="User Avatar" class="user-avatar">
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label for="program-filter">Program</label>
+                        <select id="program-filter">
+                            <option>Semua Program</option>
+                            <option>Program A</option>
+                            <option>Program B</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="periode-filter">Periode Waktu</label>
+                        <select id="periode-filter">
+                            <option>Tahunan</option>
+                            <option>Triwulan I</option>
+                            <option>Bulanan</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="status-filter">Status</label>
+                        <select id="status-filter">
+                            <option>Semua Status</option>
+                            <option>Sesuai Target</option>
+                            <option>Di Bawah Target</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary">Filter</button>
+                </div>
+
+                <div class="data-table-container">
+                    <table class="monitoring-table">
+                        <thead>
+                            <tr>
+                                <th>Kegiatan/Sub-Kegiatan</th>
+                                <th>Anggaran (Rp)</th>
+                                <th>Realisasi (Rp)</th>
+                                <th>Sisa (Rp)</th>
+                                <th>Penyerapan (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pembangunan Jaringan Irigasi</td>
+                                <td>500.080.000</td>
+                                <td>350.000.000</td>
+                                <td>150.080.000</td>
+                                <td>
+                                    <div class="progress-bar-table green">
+                                        <div class="progress" style="width: 70%;">70%</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Program A</td>
+                                <td>1.200.000.000</td>
+                                <td>900.000.000</td>
+                                <td>300.000.000</td>
+                                <td>
+                                     <div class="progress-bar-table green">
+                                        <div class="progress" style="width: 75%;">75%</div>
+                                    </div>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>Program B</td>
+                                <td>800.000.000</td>
+                                <td>200.000.000</td>
+                                <td>600.000.000</td>
+                                <td>
+                                     <div class="progress-bar-table red">
+                                        <div class="progress" style="width: 25%;">25%</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="chart-container">
+                    <h4>Grafik Tren Penyerapan Anggaran</h4>
+                    <img src="https://i.imgur.com/lZ2pA11.png" alt="Contoh Grafik Tren" style="width: 100%; height: auto;">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="dashboard-script.js"></script>
+</body>
+</html>
