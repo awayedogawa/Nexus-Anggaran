@@ -4,20 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Nexus Anggaran</title>
-    <link rel="stylesheet" href="style.css"> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="dashboard-container">
-        <h2>Selamat Datang di Dashboard</h2>
-        <p>Anda telah berhasil login.</p>
-        <p>Email Anda: <strong id="user-email">Memuat...</strong></p>
-        <button id="logout-button">Logout</button>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-cubes"></i>
+                <span>Nexus Anggaran</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> Penyusunan RKA</a></li>
+                    <li><a href="#"><i class="fas fa-sitemap"></i> Alur Persetujuan</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Monitoring & Realisasi</a></li>
+                    <li><a href="#"><i class="fas fa-print"></i> Pelaporan</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fas fa-cog"></i> Pengaturan</a>
+                <button id="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-title">
+                    <h2>Dashboard Utama</h2>
+                    <p>Selamat datang, <span id="user-email">memuat...</span></p>
+                </div>
+                <div class="header-user">
+                    <i class="fas fa-bell"></i>
+                    <img src="https://i.pravatar.cc/40" alt="User Avatar" class="user-avatar">
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="kpi-grid">
+                    <div class="kpi-card blue">
+                        <h4>Total Anggaran</h4>
+                        <p>Rp 100 Miliar</p>
+                    </div>
+                    <div class="kpi-card green">
+                        <h4>Realisasi</h4>
+                        <p>Rp 60 Miliar</p>
+                    </div>
+                    <div class="kpi-card orange">
+                        <h4>Sisa Anggaran</h4>
+                        <p>Rp 40 Miliar</p>
+                    </div>
+                    <div class="kpi-card grey">
+                        <h4>Jumlah Program</h4>
+                        <p>15 Program</p>
+                    </div>
+                </div>
+
+                <div class="data-grid">
+                    <div class="chart-container">
+                        <h4>Grafik Realisasi Anggaran</h4>
+                        <img src="https://i.imgur.com/lJ4nQ5P.png" alt="Contoh Grafik" style="width:100%; height:auto;">
+                    </div>
+                    <div class="table-container">
+                        <h4>Tabel Ringkasan Program</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Program</th>
+                                    <th>Progres</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Program Pembangunan Infrastruktur</td>
+                                    <td>
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 75%;">75%</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Program Peningkatan SDM</td>
+                                    <td>
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 30%;">30%</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td>Program Pelayanan Publik</td>
+                                    <td>
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 50%;">50%</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="firebase-config.js"></script>
-    
-    <script src="dashboard-script.js"></script> 
+    <script src="dashboard-script.js"></script>
 </body>
 </html>
