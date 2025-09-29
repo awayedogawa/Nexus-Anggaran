@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelaporan - Nexus Anggaran</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-cubes"></i>
+                <span>Nexus Anggaran</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="penyusunan-rka.html"><i class="fas fa-file-alt"></i> Penyusunan RKA</a></li>
+                    <li><a href="alur-persetujuan.html"><i class="fas fa-sitemap"></i> Alur Persetujuan</a></li>
+                    <li><a href="monitoring-realisasi.html"><i class="fas fa-chart-line"></i> Monitoring & Realisasi</a></li>
+                    <li class="active"><a href="pelaporan.html"><i class="fas fa-print"></i> Pelaporan</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fas fa-cog"></i> Pengaturan</a>
+                <button id="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-title">
+                    <h2>Pelaporan</h2>
+                    <p>Buat dan unduh laporan anggaran sesuai kebutuhan.</p>
+                </div>
+                <div class="header-user">
+                    <i class="fas fa-bell"></i>
+                    <img src="https://raw.githubusercontent.com/awayedogawa/Nexus-Anggaran/main/assets/avatar.png" alt="User Avatar" class="user-avatar">
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="report-generator-grid">
+                    <div class="report-form-panel">
+                        <h4>Formulir Generator Laporan</h4>
+                        <form class="report-form">
+                            <div class="form-group">
+                                <label for="jenis-laporan">Jenis Laporan</label>
+                                <select id="jenis-laporan">
+                                    <option>Laporan Realisasi Anggaran</option>
+                                    <option>Laporan RKA Induk</option>
+                                    <option>Laporan Deviasi Anggaran</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="periode">Periode</label>
+                                <select id="periode">
+                                    <option>Januari - Maret 2024</option>
+                                    <option>April - Juni 2024</option>
+                                    <option>Tahunan 2024</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="program-laporan">Pilih Program/Kegiatan</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" checked> Program A - Pembangunan Infrastruktur</label>
+                                    <label><input type="checkbox" checked> Program B - Peningkatan SDM</label>
+                                    <label><input type="checkbox"> Program C - Pelayanan Publik</label>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary">Pratinjau Laporan</button>
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-download"></i> Buat & Unduh</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="report-preview-panel">
+                        <h4>Pratinjau Laporan</h4>
+                        <div class="report-preview-content">
+                            
+                            <h5>Laporan Realisasi Anggaran</h5>
+                            <p><strong>Periode:</strong> Januari - Maret 2024</p>
+                            <p>Dokumen akan berisi tabel rincian belanja dan rekapitulasi untuk program yang dipilih. Siap untuk diunduh dalam format PDF dan Excel.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="dashboard-script.js"></script>
+</body>
+</html>
