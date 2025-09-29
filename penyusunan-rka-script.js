@@ -8,13 +8,41 @@ const db = firebase.firestore();
 // Pilih elemen HTML
 const tambahProgramBtn = document.getElementById('tambah-program-btn');
 const programTreeView = document.getElementById('program-tree-view');
+const detailTitle = document.getElementById('detail-title');
+const detailTableContent = document.getElementById('detail-table-content');
+
+// =================================================================
+// FUNGSI BARU: Tampilkan Detail Program di Panel Kanan
+// =================================================================
+const displayProgramDetails = (programId) => {
+    // Ambil satu dokumen spesifik dari Firestore berdasarkan ID
+    db.collection("rka_submissions").doc(programId).get()
+        .then((doc) => {
+            if (doc.exists) {
+                const programData = doc.data();
+                
+                // 1. Ubah Judul Panel Kanan
+                detailTitle.textContent = `Detail Rincian Belanja - ${programData.nama_program}`;
+                
+                // 2. Kosongkan dan isi konten detail
+                detailTableContent.innerHTML = `<p>Data untuk program <strong>${programData.nama_program}</strong> berhasil dimuat. Selanjutnya kita akan menampilkan detail belanja di sini.</p>`;
+
+            } else {
+                console.log("Dokumen tidak ditemukan!");
+                detailTitle.textContent = 'Detail Rincian Belanja';
+                detailTableContent.innerHTML = `<p class='error'>Gagal memuat data. Dokumen tidak ditemukan.</p>`;
+            }
+        }).catch((error) => {
+            console.error("Error mengambil detail program: ", error);
+        });
+};
+
 
 // =================================================================
 // FUNGSI UNTUK MEMUAT DAN MENAMPILKAN PROGRAM DARI FIRESTORE
 // =================================================================
 const loadPrograms = () => {
     programTreeView.innerHTML = '';
-
     db.collection("rka_submissions").orderBy("nama_program", "asc").get()
         .then((querySnapshot) => {
             if (querySnapshot.empty) {
@@ -26,20 +54,18 @@ const loadPrograms = () => {
                 const programData = doc.data();
                 const programElement = document.createElement('li');
                 programElement.classList.add('program');
-                
-                // ===== PENAMBAHAN BARU 1: Simpan ID di elemen =====
                 programElement.dataset.id = doc.id;
-
+                
                 const spanElement = document.createElement('span');
                 spanElement.textContent = programData.nama_program;
-                
                 programElement.appendChild(spanElement);
 
-                // ===== PENAMBAHAN BARU 2: Tambahkan Event Listener Klik =====
+                // ===== PERUBAHAN DI SINI: Ganti alert() dengan fungsi baru =====
                 programElement.addEventListener('click', function() {
+                    // Ambil ID dari program yang diklik
                     const programId = this.dataset.id;
-                    alert(`ID Program yang diklik: ${programId}`);
-                    // Nanti kita akan panggil fungsi untuk menampilkan detail di sini
+                    // Panggil fungsi untuk menampilkan detailnya
+                    displayProgramDetails(programId);
                 });
 
                 programTreeView.appendChild(programElement);
@@ -57,6 +83,7 @@ const loadPrograms = () => {
 // =================================================================
 if (tambahProgramBtn) {
     tambahProgramBtn.addEventListener('click', () => {
+        // ... (kode di sini tetap sama) ...
         const namaProgram = prompt("Masukkan Nama Program Baru:");
 
         if (namaProgram) {
@@ -67,12 +94,10 @@ if (tambahProgramBtn) {
             })
             .then((docRef) => {
                 console.log("Program baru berhasil disimpan dengan ID: ", docRef.id);
-                alert("Program baru '" + namaProgram + "' berhasil ditambahkan!");
                 loadPrograms(); 
             })
             .catch((error) => {
                 console.error("Error menambahkan program: ", error);
-                alert("Terjadi kesalahan saat menyimpan program.");
             });
         }
     });
