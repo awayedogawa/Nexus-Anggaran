@@ -12,7 +12,7 @@ const detailTitle = document.getElementById('detail-title');
 const detailTableContent = document.getElementById('detail-table-content');
 
 // =================================================================
-// FUNGSI BARU: Tampilkan Detail Program di Panel Kanan
+// FUNGSI UNTUK MENAMPILKAN DETAIL PROGRAM DI PANEL KANAN
 // =================================================================
 const displayProgramDetails = (programId) => {
     // Ambil satu dokumen spesifik dari Firestore berdasarkan ID
@@ -60,11 +60,9 @@ const loadPrograms = () => {
                 spanElement.textContent = programData.nama_program;
                 programElement.appendChild(spanElement);
 
-                // Ganti alert() dengan fungsi baru
+                // Event listener memanggil fungsi displayProgramDetails, bukan alert
                 programElement.addEventListener('click', function() {
-                    // Ambil ID dari program yang diklik
                     const programId = this.dataset.id;
-                    // Panggil fungsi untuk menampilkan detailnya
                     displayProgramDetails(programId);
                 });
 
