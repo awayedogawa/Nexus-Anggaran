@@ -1,15 +1,46 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penyusunan RKA - Nexus Anggaran</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
 <body>
     <div class="app-container">
         <aside class="sidebar">
-            </aside>
+            <div class="sidebar-header">
+                <i class="fas fa-cubes"></i>
+                <span>Nexus Anggaran</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li class="active"><a href="penyusunan-rka.html"><i class="fas fa-file-alt"></i> Penyusunan RKA</a></li>
+                    <li><a href="alur-persetujuan.html"><i class="fas fa-sitemap"></i> Alur Persetujuan</a></li>
+                    <li><a href="monitoring-realisasi.html"><i class="fas fa-chart-line"></i> Monitoring & Realisasi</a></li>
+                    <li><a href="pelaporan.html"><i class="fas fa-print"></i> Pelaporan</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
+                <button id="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </aside>
 
         <main class="main-content">
             <header class="main-header">
-                </header>
+                <div class="header-title">
+                    <h2>Penyusunan RKA</h2>
+                    <p>Input dan kelola rincian belanja program & kegiatan.</p>
+                </div>
+                <div class="header-user">
+                    <i class="fas fa-bell"></i>
+                    <img src="https://raw.githubusercontent.com/awayedogawa/Nexus-Anggaran/main/assets/avatar.png" alt="User Avatar" class="user-avatar">
+                </div>
+            </header>
 
             <div class="content-body">
                 <div class="rka-composer-grid">
@@ -25,7 +56,41 @@
                         </ul>
                     </div>
                     <div class="rka-detail-panel">
+                        <h4>Detail Rincian Belanja - Sub Kegiatan 1.1.2</h4>
+                        <div class="rka-detail-table">
+                            <div class="rka-detail-header">
+                                <span>Kode Rekening</span>
+                                <span>Uraian</span>
+                                <span class="text-right">Volume</span>
+                                <span class="text-right">Jumlah Total</span>
+                            </div>
+                            <div class="rka-detail-row">
+                                <span>5.2.1.01.01</span>
+                                <span>Upah Pekerja Harian</span>
+                                <span class="text-right">150 Org-Hari</span>
+                                <span class="text-right">7.500.000</span>
+                            </div>
+                             <div class="rka-detail-row">
+                                <span>-</span>
+                                <span>Bahan Baku Aspal Hotmix</span>
+                                <span class="text-right">20 Ton</span>
+                                <span class="text-right">30.000.000</span>
+                            </div>
+                            <div class="rka-detail-row active">
+                                <span>-</span>
+                                <span>Sewa Alat Berat (Loader)</span>
+                                <span class="text-right">1 Ls</span>
+                                <span class="text-right">5.000.000</span>
+                            </div>
                         </div>
+                         <div class="rka-actions">
+                            <span class="status-badge">Status: Draft</span>
+                            <div>
+                                <button class="btn btn-secondary">Simpan Draft</button>
+                                <button class="btn btn-primary">Ajukan Persetujuan</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
