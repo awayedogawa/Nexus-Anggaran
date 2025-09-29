@@ -17,7 +17,8 @@ const loadPrograms = () => {
     programTreeView.innerHTML = '';
 
     // 2. Ambil data dari collection 'rka_submissions'
-    db.collection("rka_submissions").orderBy("dibuat_pada", "asc").get()
+    // ===== PERUBAHAN DI SINI: orderBy("nama_program", "asc") =====
+    db.collection("rka_submissions").orderBy("nama_program", "asc").get()
         .then((querySnapshot) => {
             if (querySnapshot.empty) {
                 programTreeView.innerHTML = '<li class="program"><span>Belum ada program.</span></li>';
