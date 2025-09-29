@@ -60,7 +60,7 @@ const loadPrograms = () => {
                 spanElement.textContent = programData.nama_program;
                 programElement.appendChild(spanElement);
 
-                // ===== PERUBAHAN DI SINI: Ganti alert() dengan fungsi baru =====
+                // Ganti alert() dengan fungsi baru
                 programElement.addEventListener('click', function() {
                     // Ambil ID dari program yang diklik
                     const programId = this.dataset.id;
@@ -83,7 +83,6 @@ const loadPrograms = () => {
 // =================================================================
 if (tambahProgramBtn) {
     tambahProgramBtn.addEventListener('click', () => {
-        // ... (kode di sini tetap sama) ...
         const namaProgram = prompt("Masukkan Nama Program Baru:");
 
         if (namaProgram) {
