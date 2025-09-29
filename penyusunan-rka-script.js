@@ -13,11 +13,8 @@ const programTreeView = document.getElementById('program-tree-view');
 // FUNGSI UNTUK MEMUAT DAN MENAMPILKAN PROGRAM DARI FIRESTORE
 // =================================================================
 const loadPrograms = () => {
-    // 1. Kosongkan daftar program yang ada
     programTreeView.innerHTML = '';
 
-    // 2. Ambil data dari collection 'rka_submissions'
-    // ===== PERUBAHAN DI SINI: orderBy("nama_program", "asc") =====
     db.collection("rka_submissions").orderBy("nama_program", "asc").get()
         .then((querySnapshot) => {
             if (querySnapshot.empty) {
@@ -25,20 +22,26 @@ const loadPrograms = () => {
                 return;
             }
 
-            // 3. Loop melalui setiap dokumen dan buat elemen HTML
             querySnapshot.forEach((doc) => {
                 const programData = doc.data();
                 const programElement = document.createElement('li');
                 programElement.classList.add('program');
                 
-                // Buat elemen span untuk nama program
+                // ===== PENAMBAHAN BARU 1: Simpan ID di elemen =====
+                programElement.dataset.id = doc.id;
+
                 const spanElement = document.createElement('span');
                 spanElement.textContent = programData.nama_program;
                 
-                // Tambahkan elemen span ke dalam li
                 programElement.appendChild(spanElement);
 
-                // Tambahkan elemen li ke dalam daftar tree-view
+                // ===== PENAMBAHAN BARU 2: Tambahkan Event Listener Klik =====
+                programElement.addEventListener('click', function() {
+                    const programId = this.dataset.id;
+                    alert(`ID Program yang diklik: ${programId}`);
+                    // Nanti kita akan panggil fungsi untuk menampilkan detail di sini
+                });
+
                 programTreeView.appendChild(programElement);
             });
         })
@@ -65,8 +68,6 @@ if (tambahProgramBtn) {
             .then((docRef) => {
                 console.log("Program baru berhasil disimpan dengan ID: ", docRef.id);
                 alert("Program baru '" + namaProgram + "' berhasil ditambahkan!");
-                
-                // Panggil kembali fungsi loadPrograms agar daftar langsung terupdate
                 loadPrograms(); 
             })
             .catch((error) => {
